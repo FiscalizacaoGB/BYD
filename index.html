@@ -4,184 +4,132 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Vehicle Inspection Report</title>
 
 <link rel="manifest" href="manifest.webmanifest">
 
-<meta name="theme-color" content="#0b2545">
+<meta name="theme-color" content="#0B2545">
 
 <link rel="icon" href="logo.png">
 
-<link rel="apple-touch-icon" href="logo.png">
-
 <style>
 
-:root{
-
---primary:#0B2545;
---yellow:#F7C600;
---light:#F5F5F5;
---border:#DADADA;
---text:#222;
---danger:#d32f2f;
---success:#2e7d32;
-
-}
-.check-table th.ok,
-.check-table td.ok,
-.check-table th.nok,
-.check-table td.nok{
-
-    width:55px;
-
-    text-align:center;
-
-}
-
-
-    width:55px;
-
-    text-align:center;
-
-}
-
-.check-table input[type=radio]{
-
-    transform:scale(1.35);
-
-    cursor:pointer;
-
-}
-.check-table input[type=radio]{
-
-    transform:scale(1.35);
-
-    cursor:pointer;
-
-}
 *{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
-
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
 
-background:#eceff1;
+    background:#eceff1;
+    color:#222;
 
 }
 
 header{
 
-background:var(--primary);
+    background:#0B2545;
+    color:white;
 
-color:white;
+    padding:20px;
 
-padding:20px;
+    display:flex;
 
-display:flex;
+    align-items:center;
 
-align-items:center;
-
-gap:20px;
+    gap:20px;
 
 }
 
 header img{
 
-height:70px;
+    height:70px;
 
 }
 
 header h1{
 
-font-size:28px;
+    font-size:30px;
 
 }
 
-header h2{
+header p{
 
-font-size:16px;
+    margin-top:4px;
 
-font-weight:400;
-
-margin-top:4px;
+    opacity:.85;
 
 }
 
 .container{
 
-max-width:1200px;
+    max-width:1200px;
 
-margin:25px auto;
+    margin:25px auto;
 
-background:white;
+    background:white;
 
-border-radius:14px;
+    padding:25px;
 
-padding:25px;
+    border-radius:12px;
 
-box-shadow:0 4px 20px rgba(0,0,0,.10);
+    box-shadow:0 4px 18px rgba(0,0,0,.12);
 
 }
 
 .section{
 
-margin-top:35px;
+    margin-top:30px;
 
 }
 
 .section-title{
 
-background:var(--yellow);
+    background:#F7C600;
 
-padding:10px 15px;
+    padding:10px 15px;
 
-font-size:18px;
+    border-radius:8px;
 
-font-weight:bold;
+    font-weight:bold;
 
-border-radius:8px;
-
-margin-bottom:15px;
+    margin-bottom:15px;
 
 }
 
 .grid4{
 
-display:grid;
+    display:grid;
 
-grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(4,1fr);
 
-gap:15px;
+    gap:15px;
 
 }
 
-.grid2{
+.grid3{
 
-display:grid;
+    display:grid;
 
-grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(3,1fr);
 
-gap:15px;
+    gap:20px;
 
 }
 
 label{
 
-display:block;
+    display:block;
 
-font-size:14px;
+    margin-bottom:6px;
 
-margin-bottom:5px;
+    font-size:14px;
 
-font-weight:bold;
+    font-weight:bold;
 
 }
 
@@ -190,150 +138,158 @@ input[type=date],
 input[type=time],
 textarea{
 
-width:100%;
+    width:100%;
 
-padding:10px;
+    padding:10px;
 
-border:1px solid var(--border);
+    border:1px solid #DDD;
 
-border-radius:8px;
+    border-radius:8px;
 
-font-size:15px;
+    font-size:15px;
 
 }
 
 textarea{
 
-resize:vertical;
+    resize:vertical;
 
-min-height:90px;
-
-}
-
-.check-table{
-
-width:100%;
-
-border-collapse:collapse;
+    min-height:120px;
 
 }
 
-.check-table th{
+table{
 
-background:#eeeeee;
+    width:100%;
 
-padding:10px;
-
-}
-
-.check-table td{
-
-border:1px solid #DDD;
-
-padding:10px;
-
-vertical-align:middle;
+    border-collapse:collapse;
 
 }
 
-.check-table td:first-child{
+th{
 
-width:320px;
+    background:#f1f1f1;
 
 }
 
-.check-table td:nth-child(2),
-.check-table td:nth-child(3){
+th,
+td{
 
-width:120px;
+    border:1px solid #DDD;
 
-text-align:center;
+    padding:10px;
+
+}
+
+th.ok,
+td.ok{
+
+    width:60px;
+
+    text-align:center;
+
+}
+
+th.nok,
+td.nok{
+
+    width:60px;
+
+    text-align:center;
+
+}
+
+table input[type=radio]{
+
+    transform:scale(1.3);
+
+    cursor:pointer;
 
 }
 
 .preview{
 
-display:flex;
+    display:flex;
 
-gap:10px;
+    flex-wrap:wrap;
 
-flex-wrap:wrap;
+    gap:10px;
 
-margin-top:15px;
+    margin-top:15px;
 
 }
 
 .preview img{
 
-width:170px;
+    width:180px;
 
-height:130px;
+    height:140px;
 
-object-fit:cover;
+    object-fit:cover;
 
-border-radius:8px;
+    border-radius:8px;
 
-border:3px solid white;
-
-box-shadow:0 3px 10px rgba(0,0,0,.15);
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
 
 }
 
 button{
 
-background:var(--yellow);
+    background:#F7C600;
 
-border:none;
+    border:none;
 
-padding:15px 30px;
+    padding:16px 45px;
 
-border-radius:8px;
+    border-radius:8px;
 
-font-size:18px;
+    font-size:18px;
 
-font-weight:bold;
+    font-weight:bold;
 
-cursor:pointer;
-
-transition:.2s;
+    cursor:pointer;
 
 }
 
 button:hover{
 
-transform:scale(1.02);
+    opacity:.9;
+
+}
+
+#loading{
+
+    display:none;
+
+    margin-top:15px;
+
+    font-weight:bold;
+
+    color:#0B2545;
 
 }
 
 @media(max-width:900px){
 
-.grid4{
+    .grid4{
 
-grid-template-columns:1fr;
+        grid-template-columns:1fr;
 
-}
+    }
 
-.grid2{
+    .grid3{
 
-grid-template-columns:1fr;
+        grid-template-columns:1fr;
 
-}
+    }
 
-.check-table{
+    header{
 
-display:block;
+        flex-direction:column;
 
-overflow:auto;
+        text-align:center;
 
-}
-
-header{
-
-flex-direction:column;
-
-text-align:center;
-
-}
+    }
 
 }
 
@@ -351,7 +307,7 @@ text-align:center;
 
 <h1>Vehicle Inspection Report</h1>
 
-<h2>Relatório de Inspeção Veicular</h2>
+<p>Relatório de Inspeção Veicular</p>
 
 </div>
 
@@ -373,7 +329,11 @@ Dados do Veículo
 
 <label>Prefixo</label>
 
-<input id="prefixo" type="text" required>
+<input
+id="prefixo"
+type="text"
+maxlength="5"
+required>
 
 </div>
 
@@ -381,7 +341,12 @@ Dados do Veículo
 
 <label>Placa</label>
 
-<input id="placa" type="text" required>
+<input
+id="placa"
+type="text"
+maxlength="8"
+style="text-transform:uppercase"
+required>
 
 </div>
 
@@ -389,7 +354,10 @@ Dados do Veículo
 
 <label>Data</label>
 
-<input id="data" type="date" readonly>
+<input
+id="data"
+type="date"
+readonly>
 
 </div>
 
@@ -397,321 +365,68 @@ Dados do Veículo
 
 <label>Hora</label>
 
-<input id="hora" type="time" readonly>
+<input
+id="hora"
+type="time"
+readonly>
 
 </div>
 
 </div>
 
 </div>
-<!-- ===========================
-     DOCUMENTAÇÃO
-=========================== -->
 
 <div class="section">
 
-    <div class="section-title">
+<div class="section-title">
 
-        Documentação / Documentation
+Checklist da Inspeção
 
-    </div>
+</div>
 
-    <table class="check-table">
+<table>
 
-        <thead>
+<thead>
 
-           <tr>
+<tr>
 
-    <th>Item</th>
+<th>Item</th>
 
-    <th class="ok">✔</th>
+<th class="ok">✅</th>
 
-    <th class="nok">✖</th>
+<th class="nok">❌</th>
 
-    <th>Observação</th>
+<th>Observação</th>
 
 </tr>
 
-        </thead>
+</thead>
 
-        <tbody>
+<tbody id="checklistBody">
 
-            <tr>
+</tbody>
 
-
-<td>CRLV</td>
-
-<td class="ok">
-<input type="radio" name="crlv" value="OK" checked>
-</td>
-
-<td class="nok">
-<input type="radio" name="crlv" value="NOK">
-</td>
-
-<td>
-<input type="text" id="obs_crlv">
-</td>
-
-</tr>
-
-            <tr>
-
-                <td>Certificado de Vistoria AGERBA</td>
-
-                <td><input type="radio" name="agerba" value="OK" checked></td>
-
-                <td><input type="radio" name="agerba" value="NOK"></td>
-
-                <td><input type="text" id="obs_agerba"></td>
-
-            </tr>
-
-            <tr>
-
-                <td>Certificado de Fretamento</td>
-
-                <td><input type="radio" name="fretamento" value="OK" checked></td>
-
-                <td><input type="radio" name="fretamento" value="NOK"></td>
-
-                <td><input type="text" id="obs_fretamento"></td>
-
-            </tr>
-
-            <tr>
-
-                <td>Documento Cronotacógrafo</td>
-
-                <td><input type="radio" name="tacografo" value="OK" checked></td>
-
-                <td><input type="radio" name="tacografo" value="NOK"></td>
-
-                <td><input type="text" id="obs_tacografo"></td>
-
-            </tr>
-
-        </tbody>
-
-    </table>
+</table>
 
 </div>
-
 <!-- ===========================
-     SEGURANÇA
+     FOTOS DA INSPEÇÃO
 =========================== -->
 
 <div class="section">
 
     <div class="section-title">
 
-        Segurança / Safety
+        Fotos da Inspeção
 
     </div>
 
-    <table class="check-table">
-
-        <thead>
-
-            <tr>
-
-                <th>Item</th>
-
-                <th>Conforme</th>
-
-                <th>Não Conforme</th>
-
-                <th>Observação</th>
-
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-            <tr>
-
-                <td>Extintor de Incêndio</td>
-
-                <td><input type="radio" name="extintor" value="OK" checked></td>
-
-                <td><input type="radio" name="extintor" value="NOK"></td>
-
-                <td><input type="text" id="obs_extintor"></td>
-
-            </tr>
-
-            <tr>
-
-                <td>Martelos de Emergência</td>
-
-                <td><input type="radio" name="martelos" value="OK" checked></td>
-
-                <td><input type="radio" name="martelos" value="NOK"></td>
-
-                <td><input type="text" id="obs_martelos"></td>
-
-            </tr>
-
-            <tr>
-
-                <td>Saídas de Emergência</td>
-
-                <td><input type="radio" name="saida" value="OK" checked></td>
-
-                <td><input type="radio" name="saida" value="NOK"></td>
-
-                <td><input type="text" id="obs_saida"></td>
-
-            </tr>
-
-            <tr>
-
-                <td>Sinalização dos Degraus</td>
-
-                <td><input type="radio" name="degraus" value="OK" checked></td>
-
-                <td><input type="radio" name="degraus" value="NOK"></td>
-
-                <td><input type="text" id="obs_degraus"></td>
-
-            </tr>
-
-            <tr>
-
-                <td>Faixas Refletivas</td>
-
-                <td><input type="radio" name="faixas" value="OK" checked></td>
-
-                <td><input type="radio" name="faixas" value="NOK"></td>
-
-                <td><input type="text" id="obs_faixas"></td>
-
-            </tr>
-
-            <tr>
-
-                <td>Pneus</td>
-
-                <td><input type="radio" name="pneus" value="OK" checked></td>
-
-                <td><input type="radio" name="pneus" value="NOK"></td>
-
-                <td><input type="text" id="obs_pneus"></td>
-
-            </tr>
-
-            <tr>
-
-                <td>Cintos de Segurança</td>
-
-                <td><input type="radio" name="cintos" value="OK" checked></td>
-
-                <td><input type="radio" name="cintos" value="NOK"></td>
-
-                <td><input type="text" id="obs_cintos"></td>
-
-            </tr>
-
-            <tr>
-
-                <td>Assentos</td>
-
-                <td><input type="radio" name="assentos" value="OK" checked></td>
-
-                <td><input type="radio" name="assentos" value="NOK"></td>
-
-                <td><input type="text" id="obs_assentos"></td>
-
-            </tr>
-
-        </tbody>
-
-    </table>
-
-</div>
-
-<!-- ===========================
-     LIMPEZA
-=========================== -->
-
-<div class="section">
-
-    <div class="section-title">
-
-        Limpeza / Cleaning
-
-    </div>
-
-    <table class="check-table">
-
-        <thead>
-
-            <tr>
-
-                <th>Item</th>
-
-                <th>Conforme</th>
-
-                <th>Não Conforme</th>
-
-                <th>Observação</th>
-
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-            <tr>
-
-                <td>Limpeza Interna</td>
-
-                <td><input type="radio" name="lint" value="OK" checked></td>
-
-                <td><input type="radio" name="lint" value="NOK"></td>
-
-                <td><input type="text" id="obs_lint"></td>
-
-            </tr>
-
-            <tr>
-
-                <td>Limpeza Externa</td>
-
-                <td><input type="radio" name="lext" value="OK" checked></td>
-
-                <td><input type="radio" name="lext" value="NOK"></td>
-
-                <td><input type="text" id="obs_lext"></td>
-
-            </tr>
-
-        </tbody>
-
-    </table>
-
-</div>
-<!-- ===========================
-     FOTOS
-=========================== -->
-
-<div class="section">
-
-    <div class="section-title">
-
-        Fotos / Photos
-
-    </div>
-
-    <div class="grid2">
+    <div class="grid3">
 
         <div>
 
             <label>
-
                 Foto Frontal / Front Photo
-
             </label>
 
             <input
@@ -724,7 +439,6 @@ Dados do Veículo
             <div
                 id="previewFrontal"
                 class="preview">
-
             </div>
 
         </div>
@@ -732,9 +446,7 @@ Dados do Veículo
         <div>
 
             <label>
-
                 Limpeza / Cleaning
-
             </label>
 
             <input
@@ -747,33 +459,27 @@ Dados do Veículo
             <div
                 id="previewLimpeza"
                 class="preview">
-
             </div>
 
         </div>
 
-    </div>
+        <div>
 
-    <br>
+            <label>
+                Segurança / Security
+            </label>
 
-    <div>
+            <input
+                id="fotoSeguranca"
+                type="file"
+                accept="image/*"
+                capture="environment"
+                multiple>
 
-        <label>
-
-            Segurança / Security
-
-        </label>
-
-        <input
-            id="fotoSeguranca"
-            type="file"
-            accept="image/*"
-            capture="environment"
-            multiple>
-
-        <div
-            id="previewSeguranca"
-            class="preview">
+            <div
+                id="previewSeguranca"
+                class="preview">
+            </div>
 
         </div>
 
@@ -782,7 +488,7 @@ Dados do Veículo
 </div>
 
 <!-- ===========================
-OBSERVAÇÕES
+     OBSERVAÇÕES
 =========================== -->
 
 <div class="section">
@@ -795,28 +501,27 @@ OBSERVAÇÕES
 
     <textarea
         id="observacoes"
-        rows="5"
-        placeholder="Digite observações adicionais..."></textarea>
+        placeholder="Digite observações adicionais...">
+    </textarea>
 
 </div>
 
 <!-- ===========================
-BOTÃO
+     MENSAGEM
 =========================== -->
 
 <div
-    style="margin-top:40px;
-           text-align:center;">
-<div
-id="loading"
-
-style="display:none;
-margin-top:20px;
-text-align:center;">
-
-Gerando relatório...
-
+    id="mensagem"
+    style="margin-top:20px;color:#c62828;font-weight:bold;">
 </div>
+
+<!-- ===========================
+     BOTÃO
+=========================== -->
+
+<div
+    style="margin-top:35px;text-align:center;">
+
     <button
         id="btnGerar">
 
@@ -824,41 +529,325 @@ Gerando relatório...
 
     </button>
 
+    <div id="loading">
+
+        Gerando relatório...
+
+    </div>
+
 </div>
 
 </div>
+
+<!-- ==========================================================
+     INÍCIO DO JAVASCRIPT
+=========================================================== -->
 
 <script>
 
-const fotos={
+/* ==========================================================
+   CONFIGURAÇÕES
+========================================================== */
 
-    frontal:[],
-    limpeza:[],
-    seguranca:[]
+const APP = {
+
+    gps:{
+        latitude:null,
+        longitude:null,
+        accuracy:null
+    },
+
+    fotos:{
+        frontal:[],
+        limpeza:[],
+        seguranca:[]
+    }
 
 };
 
-function preview(input,container,array){
+/* ==========================================================
+   CHECKLIST
+========================================================== */
 
-    const div=document.getElementById(container);
+const CHECKLIST = [
 
-    div.innerHTML="";
+{
+categoria:"DOCUMENTAÇÃO",
+itens:[
+"CRLV",
+"Certificado de Vistoria AGERBA",
+"Certificado de Fretamento",
+"Documento Cronotacógrafo"
+]
+},
 
-    array.length=0;
+{
+categoria:"SEGURANÇA",
+itens:[
+"Extintor de Incêndio",
+"Martelos de Emergência",
+"Saídas de Emergência",
+"Sinalização dos Degraus",
+"Faixas Refletivas",
+"Pneus",
+"Cintos de Segurança",
+"Assentos"
+]
+},
+
+{
+categoria:"LIMPEZA",
+itens:[
+"Limpeza Interna",
+"Limpeza Externa"
+]
+}
+
+];
+    /* ==========================================================
+   INICIALIZAÇÃO
+========================================================== */
+
+document.addEventListener("DOMContentLoaded", iniciarSistema);
+
+function iniciarSistema(){
+
+    preencherDataHora();
+
+    criarChecklist();
+
+    configurarFotos();
+
+    obterGPS();
+
+    document
+        .getElementById("btnGerar")
+        .addEventListener("click", gerarRelatorio);
+
+}
+
+/* ==========================================================
+   DATA E HORA
+========================================================== */
+
+function preencherDataHora(){
+
+    const agora = new Date();
+
+    document.getElementById("data").value =
+        agora.toISOString().split("T")[0];
+
+    document.getElementById("hora").value =
+        agora.toLocaleTimeString("pt-BR",{
+
+            hour:"2-digit",
+
+            minute:"2-digit"
+
+        });
+
+}
+
+/* ==========================================================
+   CRIAR CHECKLIST
+========================================================== */
+
+function criarChecklist(){
+
+    const tbody=document.getElementById("checklistBody");
+
+    tbody.innerHTML="";
+
+    CHECKLIST.forEach(grupo=>{
+
+        tbody.innerHTML+=`
+
+        <tr style="background:#F7C600;font-weight:bold;">
+
+            <td colspan="4">
+
+                ${grupo.categoria}
+
+            </td>
+
+        </tr>
+
+        `;
+
+        grupo.itens.forEach(item=>{
+
+            const id=item
+
+                .normalize("NFD")
+
+                .replace(/[\u0300-\u036f]/g,"")
+
+                .replace(/\s+/g,"_")
+
+                .toLowerCase();
+
+            tbody.innerHTML+=`
+
+            <tr>
+
+                <td>${item}</td>
+
+                <td class="ok">
+
+                    <input
+
+                    type="radio"
+
+                    name="${id}"
+
+                    value="OK"
+
+                    checked>
+
+                </td>
+
+                <td class="nok">
+
+                    <input
+
+                    type="radio"
+
+                    name="${id}"
+
+                    value="NOK">
+
+                </td>
+
+                <td>
+
+                    <input
+
+                    id="obs_${id}"
+
+                    type="text">
+
+                </td>
+
+            </tr>
+
+            `;
+
+        });
+
+    });
+
+}
+
+/* ==========================================================
+   GPS
+========================================================== */
+
+function obterGPS(){
+
+    if(!navigator.geolocation){
+
+        console.log("GPS não suportado.");
+
+        return;
+
+    }
+
+    navigator.geolocation.getCurrentPosition(
+
+        pos=>{
+
+            APP.gps.latitude=pos.coords.latitude;
+
+            APP.gps.longitude=pos.coords.longitude;
+
+            APP.gps.accuracy=pos.coords.accuracy;
+
+            console.log(APP.gps);
+
+        },
+
+        erro=>{
+
+            console.log(erro);
+
+        },
+
+        {
+
+            enableHighAccuracy:true,
+
+            timeout:10000
+
+        }
+
+    );
+
+}
+/* ==========================================================
+   FOTOS
+========================================================== */
+
+function configurarFotos(){
+
+    document
+        .getElementById("fotoFrontal")
+        .addEventListener("change",function(){
+
+            carregarPreview(
+                this,
+                "previewFrontal",
+                APP.fotos.frontal
+            );
+
+        });
+
+    document
+        .getElementById("fotoLimpeza")
+        .addEventListener("change",function(){
+
+            carregarPreview(
+                this,
+                "previewLimpeza",
+                APP.fotos.limpeza
+            );
+
+        });
+
+    document
+        .getElementById("fotoSeguranca")
+        .addEventListener("change",function(){
+
+            carregarPreview(
+                this,
+                "previewSeguranca",
+                APP.fotos.seguranca
+            );
+
+        });
+
+}
+
+function carregarPreview(input,idPreview,lista){
+
+    const preview=document.getElementById(idPreview);
+
+    preview.innerHTML="";
+
+    lista.length=0;
 
     [...input.files].forEach(file=>{
 
-        array.push(file);
+        lista.push(file);
 
         const reader=new FileReader();
 
-        reader.onload=e=>{
+        reader.onload=function(e){
 
             const img=document.createElement("img");
 
             img.src=e.target.result;
 
-            div.appendChild(img);
+            preview.appendChild(img);
 
         };
 
@@ -868,26 +857,431 @@ function preview(input,container,array){
 
 }
 
-document.getElementById("fotoFrontal")
-.addEventListener("change",function(){
+/* ==========================================================
+   COLETA DOS DADOS
+========================================================== */
 
-    preview(this,"previewFrontal",fotos.frontal);
+function coletarDados(){
 
-});
+    const dados={
 
-document.getElementById("fotoLimpeza")
-.addEventListener("change",function(){
+        prefixo:document.getElementById("prefixo").value.trim(),
 
-    preview(this,"previewLimpeza",fotos.limpeza);
+        placa:document.getElementById("placa").value
+                    .trim()
+                    .toUpperCase(),
 
-});
+        data:document.getElementById("data").value,
 
-document.getElementById("fotoSeguranca")
-.addEventListener("change",function(){
+        hora:document.getElementById("hora").value,
 
-    preview(this,"previewSeguranca",fotos.seguranca);
+        observacoes:document
+            .getElementById("observacoes")
+            .value,
 
-});
+        gps:APP.gps,
+
+        checklist:[],
+
+        fotos:APP.fotos
+
+    };
+
+    CHECKLIST.forEach(grupo=>{
+
+        grupo.itens.forEach(item=>{
+
+            const id=item
+
+            .normalize("NFD")
+
+            .replace(/[\u0300-\u036f]/g,"")
+
+            .replace(/\s+/g,"_")
+
+            .toLowerCase();
+
+            const status=document.querySelector(
+
+                `input[name="${id}"]:checked`
+
+            ).value;
+
+            const obs=document.getElementById(
+
+                "obs_"+id
+
+            ).value;
+
+            dados.checklist.push({
+
+                categoria:grupo.categoria,
+
+                item:item,
+
+                status:status,
+
+                observacao:obs
+
+            });
+
+        });
+
+    });
+
+    return dados;
+
+}
+
+/* ==========================================================
+   BOTÃO
+========================================================== */
+
+function gerarRelatorio(){
+
+    document.getElementById("mensagem").innerHTML="";
+
+    if(document.getElementById("prefixo").value==""){
+
+        document.getElementById("mensagem").innerHTML=
+        "Informe o prefixo.";
+
+        return;
+
+    }
+
+    if(document.getElementById("placa").value==""){
+
+        document.getElementById("mensagem").innerHTML=
+        "Informe a placa.";
+
+        return;
+
+    }
+
+    const dados=coletarDados();
+
+    console.clear();
+
+    console.log(dados);
+
+    document.getElementById("loading").style.display="block";
+
+    /*
+        Próxima etapa:
+        enviar para o Google Apps Script
+    */
+
+}
+    /* ==========================================================
+   CONFIGURAÇÃO GOOGLE APPS SCRIPT
+========================================================== */
+
+/*
+   COLE A URL DO WEB APP AQUI APÓS O DEPLOY
+*/
+
+const WEB_APP_URL = "";
+
+
+/* ==========================================================
+   CONVERTER FOTO PARA BASE64
+========================================================== */
+/* ==========================================================
+   REDUZIR FOTO
+========================================================== */
+
+function reduzirImagem(file){
+
+    return new Promise((resolve,reject)=>{
+
+        const reader = new FileReader();
+
+        reader.onload = function(e){
+
+            const img = new Image();
+
+            img.onload = function(){
+
+                let largura = img.width;
+                let altura = img.height;
+
+                const MAX = 1600;
+
+                if(largura > altura){
+
+                    if(largura > MAX){
+
+                        altura = altura * MAX / largura;
+                        largura = MAX;
+
+                    }
+
+                }else{
+
+                    if(altura > MAX){
+
+                        largura = largura * MAX / altura;
+                        altura = MAX;
+
+                    }
+
+                }
+
+                const canvas = document.createElement("canvas");
+
+                canvas.width = largura;
+                canvas.height = altura;
+
+                const ctx = canvas.getContext("2d");
+
+                ctx.drawImage(img,0,0,largura,altura);
+
+                resolve(
+
+                    canvas.toDataURL(
+
+                        "image/jpeg",
+
+                        0.80
+
+                    )
+
+                );
+
+            };
+
+            img.src = e.target.result;
+
+        };
+
+        reader.onerror = reject;
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
+
+
+/* ==========================================================
+   PREPARAR FOTOS
+========================================================== */
+
+async function prepararFotos(){
+
+    const fotos = {
+
+        frontal:[],
+
+        limpeza:[],
+
+        seguranca:[]
+
+    };
+
+    for(const file of APP.fotos.frontal){
+
+        fotos.frontal.push({
+
+            nome:file.name,
+
+            base64:await reduzirImagem(file)
+
+        });
+
+    }
+
+    for(const file of APP.fotos.limpeza){
+
+        fotos.limpeza.push({
+
+            nome:file.name,
+
+            base64:await reduzirImagem(file)
+        });
+
+    }
+
+    for(const file of APP.fotos.seguranca){
+
+        fotos.seguranca.push({
+
+            nome:file.name,
+
+            base64:await reduzirImagem(file)
+
+        });
+
+    }
+
+    return fotos;
+
+}
+
+
+/* ==========================================================
+   ENVIAR PARA O GOOGLE APPS SCRIPT
+========================================================== */
+
+async function enviarRelatorio(){
+
+    try{
+
+        document.getElementById("loading").style.display="block";
+
+        const dados = coletarDados();
+
+        dados.fotos = await prepararFotos();
+
+        const resposta = await fetch(
+
+            WEB_APP_URL,
+
+            {
+
+                method:"POST",
+
+                headers:{
+
+                    "Content-Type":"text/plain"
+
+                },
+
+                body:JSON.stringify(dados)
+
+            }
+
+        );
+
+        const json = await resposta.json();
+
+        document.getElementById("loading").style.display="none";
+
+        if(json.status=="ok"){
+
+            alert("Relatório enviado com sucesso.");
+
+            console.log(json);
+
+        }
+
+        else{
+
+            alert(json.message);
+
+        }
+
+    }
+
+catch(e){
+
+    console.error(e);
+
+    erro("Erro ao enviar relatório.");
+
+}
+
+}
+
+
+/* ==========================================================
+   ALTERAR BOTÃO
+========================================================== */
+
+async function gerarRelatorio(){
+
+    document.getElementById("mensagem").innerHTML="";
+
+    if(document.getElementById("prefixo").value.trim()==""){
+
+        document.getElementById("mensagem").innerHTML=
+        "Informe o Prefixo.";
+
+        return;
+
+    }
+
+    if(document.getElementById("placa").value.trim()==""){
+
+        document.getElementById("mensagem").innerHTML=
+        "Informe a Placa.";
+
+        return;
+
+    }
+
+    await enviarRelatorio();
+
+}
+    /* ==========================================================
+   LIMPAR FORMULÁRIO
+========================================================== */
+
+function limparFormulario(){
+
+    document.getElementById("prefixo").value="";
+    document.getElementById("placa").value="";
+    document.getElementById("observacoes").value="";
+
+    preencherDataHora();
+
+    document.getElementById("previewFrontal").innerHTML="";
+    document.getElementById("previewLimpeza").innerHTML="";
+    document.getElementById("previewSeguranca").innerHTML="";
+
+    document.getElementById("fotoFrontal").value="";
+    document.getElementById("fotoLimpeza").value="";
+    document.getElementById("fotoSeguranca").value="";
+
+    APP.fotos.frontal=[];
+    APP.fotos.limpeza=[];
+    APP.fotos.seguranca=[];
+
+    criarChecklist();
+obterGPS();
+}
+
+
+/* ==========================================================
+   SUCESSO
+========================================================== */
+
+function sucesso(resposta){
+
+    document.getElementById("loading").style.display="none";
+
+    alert("Relatório enviado com sucesso.");
+
+    console.log(resposta);
+
+    limparFormulario();
+
+}
+
+
+/* ==========================================================
+   ERRO
+========================================================== */
+
+function erro(mensagem){
+
+    document.getElementById("loading").style.display="none";
+
+    alert(mensagem);
+
+}
+
+
+/* ==========================================================
+   TESTE LOCAL
+========================================================== */
+
+console.log("Vehicle Inspection System");
+
+console.log("Cidade Sol");
+
+console.log("Versão 1.0");
 
 </script>
 
