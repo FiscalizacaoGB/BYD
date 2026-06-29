@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Vehicle Inspection Report</title>
+
+<link rel="manifest" href="manifest.webmanifest">
+
+<meta name="theme-color" content="#0b2545">
+
+<link rel="icon" href="logo.png">
+
+<link rel="apple-touch-icon" href="logo.png">
+
+<style>
+
+:root{
+
+--primary:#0B2545;
+--yellow:#F7C600;
+--light:#F5F5F5;
+--border:#DADADA;
+--text:#222;
+--danger:#d32f2f;
+--success:#2e7d32;
+
+}
+.check-table th.ok,
+.check-table td.ok,
+.check-table th.nok,
+.check-table td.nok{
+
+    width:55px;
+
+    text-align:center;
+
+}
+
+
+    width:55px;
+
+    text-align:center;
+
+}
+
+.check-table input[type=radio]{
+
+    transform:scale(1.35);
+
+    cursor:pointer;
+
+}
+.check-table input[type=radio]{
+
+    transform:scale(1.35);
+
+    cursor:pointer;
+
+}
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+
+}
+
+body{
+
+background:#eceff1;
+
+}
+
+header{
+
+background:var(--primary);
+
+color:white;
+
+padding:20px;
+
+display:flex;
+
+align-items:center;
+
+gap:20px;
+
+}
+
+header img{
+
+height:70px;
+
+}
+
+header h1{
+
+font-size:28px;
+
+}
+
+header h2{
+
+font-size:16px;
+
+font-weight:400;
+
+margin-top:4px;
+
+}
+
+.container{
+
+max-width:1200px;
+
+margin:25px auto;
+
+background:white;
+
+border-radius:14px;
+
+padding:25px;
+
+box-shadow:0 4px 20px rgba(0,0,0,.10);
+
+}
+
+.section{
+
+margin-top:35px;
+
+}
+
+.section-title{
+
+background:var(--yellow);
+
+padding:10px 15px;
+
+font-size:18px;
+
+font-weight:bold;
+
+border-radius:8px;
+
+margin-bottom:15px;
+
+}
+
+.grid4{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:15px;
+
+}
+
+.grid2{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:15px;
+
+}
+
+label{
+
+display:block;
+
+font-size:14px;
+
+margin-bottom:5px;
+
+font-weight:bold;
+
+}
+
+input[type=text],
+input[type=date],
+input[type=time],
+textarea{
+
+width:100%;
+
+padding:10px;
+
+border:1px solid var(--border);
+
+border-radius:8px;
+
+font-size:15px;
+
+}
+
+textarea{
+
+resize:vertical;
+
+min-height:90px;
+
+}
+
+.check-table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+.check-table th{
+
+background:#eeeeee;
+
+padding:10px;
+
+}
+
+.check-table td{
+
+border:1px solid #DDD;
+
+padding:10px;
+
+vertical-align:middle;
+
+}
+
+.check-table td:first-child{
+
+width:320px;
+
+}
+
+.check-table td:nth-child(2),
+.check-table td:nth-child(3){
+
+width:120px;
+
+text-align:center;
+
+}
+
+.preview{
+
+display:flex;
+
+gap:10px;
+
+flex-wrap:wrap;
+
+margin-top:15px;
+
+}
+
+.preview img{
+
+width:170px;
+
+height:130px;
+
+object-fit:cover;
+
+border-radius:8px;
+
+border:3px solid white;
+
+box-shadow:0 3px 10px rgba(0,0,0,.15);
+
+}
+
+button{
+
+background:var(--yellow);
+
+border:none;
+
+padding:15px 30px;
+
+border-radius:8px;
+
+font-size:18px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+button:hover{
+
+transform:scale(1.02);
+
+}
+
+@media(max-width:900px){
+
+.grid4{
+
+grid-template-columns:1fr;
+
+}
+
+.grid2{
+
+grid-template-columns:1fr;
+
+}
+
+.check-table{
+
+display:block;
+
+overflow:auto;
+
+}
+
+header{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<img src="logo.png">
+
+<div>
+
+<h1>Vehicle Inspection Report</h1>
+
+<h2>Relatório de Inspeção Veicular</h2>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="section">
+
+<div class="section-title">
+
+Dados do Veículo
+
+</div>
+
+<div class="grid4">
+
+<div>
+
+<label>Prefixo</label>
+
+<input id="prefixo" type="text" required>
+
+</div>
+
+<div>
+
+<label>Placa</label>
+
+<input id="placa" type="text" required>
+
+</div>
+
+<div>
+
+<label>Data</label>
+
+<input id="data" type="date" readonly>
+
+</div>
+
+<div>
+
+<label>Hora</label>
+
+<input id="hora" type="time" readonly>
+
+</div>
+
+</div>
+
+</div>
+<!-- ===========================
+     DOCUMENTAÇÃO
+=========================== -->
+
+<div class="section">
+
+    <div class="section-title">
+
+        Documentação / Documentation
+
+    </div>
+
+    <table class="check-table">
+
+        <thead>
+
+           <tr>
+
+    <th>Item</th>
+
+    <th class="ok">✔</th>
+
+    <th class="nok">✖</th>
+
+    <th>Observação</th>
+
+</tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+
+<td>CRLV</td>
+
+<td class="ok">
+<input type="radio" name="crlv" value="OK" checked>
+</td>
+
+<td class="nok">
+<input type="radio" name="crlv" value="NOK">
+</td>
+
+<td>
+<input type="text" id="obs_crlv">
+</td>
+
+</tr>
+
+            <tr>
+
+                <td>Certificado de Vistoria AGERBA</td>
+
+                <td><input type="radio" name="agerba" value="OK" checked></td>
+
+                <td><input type="radio" name="agerba" value="NOK"></td>
+
+                <td><input type="text" id="obs_agerba"></td>
+
+            </tr>
+
+            <tr>
+
+                <td>Certificado de Fretamento</td>
+
+                <td><input type="radio" name="fretamento" value="OK" checked></td>
+
+                <td><input type="radio" name="fretamento" value="NOK"></td>
+
+                <td><input type="text" id="obs_fretamento"></td>
+
+            </tr>
+
+            <tr>
+
+                <td>Documento Cronotacógrafo</td>
+
+                <td><input type="radio" name="tacografo" value="OK" checked></td>
+
+                <td><input type="radio" name="tacografo" value="NOK"></td>
+
+                <td><input type="text" id="obs_tacografo"></td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<!-- ===========================
+     SEGURANÇA
+=========================== -->
+
+<div class="section">
+
+    <div class="section-title">
+
+        Segurança / Safety
+
+    </div>
+
+    <table class="check-table">
+
+        <thead>
+
+            <tr>
+
+                <th>Item</th>
+
+                <th>Conforme</th>
+
+                <th>Não Conforme</th>
+
+                <th>Observação</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>Extintor de Incêndio</td>
+
+                <td><input type="radio" name="extintor" value="OK" checked></td>
+
+                <td><input type="radio" name="extintor" value="NOK"></td>
+
+                <td><input type="text" id="obs_extintor"></td>
+
+            </tr>
+
+            <tr>
+
+                <td>Martelos de Emergência</td>
+
+                <td><input type="radio" name="martelos" value="OK" checked></td>
+
+                <td><input type="radio" name="martelos" value="NOK"></td>
+
+                <td><input type="text" id="obs_martelos"></td>
+
+            </tr>
+
+            <tr>
+
+                <td>Saídas de Emergência</td>
+
+                <td><input type="radio" name="saida" value="OK" checked></td>
+
+                <td><input type="radio" name="saida" value="NOK"></td>
+
+                <td><input type="text" id="obs_saida"></td>
+
+            </tr>
+
+            <tr>
+
+                <td>Sinalização dos Degraus</td>
+
+                <td><input type="radio" name="degraus" value="OK" checked></td>
+
+                <td><input type="radio" name="degraus" value="NOK"></td>
+
+                <td><input type="text" id="obs_degraus"></td>
+
+            </tr>
+
+            <tr>
+
+                <td>Faixas Refletivas</td>
+
+                <td><input type="radio" name="faixas" value="OK" checked></td>
+
+                <td><input type="radio" name="faixas" value="NOK"></td>
+
+                <td><input type="text" id="obs_faixas"></td>
+
+            </tr>
+
+            <tr>
+
+                <td>Pneus</td>
+
+                <td><input type="radio" name="pneus" value="OK" checked></td>
+
+                <td><input type="radio" name="pneus" value="NOK"></td>
+
+                <td><input type="text" id="obs_pneus"></td>
+
+            </tr>
+
+            <tr>
+
+                <td>Cintos de Segurança</td>
+
+                <td><input type="radio" name="cintos" value="OK" checked></td>
+
+                <td><input type="radio" name="cintos" value="NOK"></td>
+
+                <td><input type="text" id="obs_cintos"></td>
+
+            </tr>
+
+            <tr>
+
+                <td>Assentos</td>
+
+                <td><input type="radio" name="assentos" value="OK" checked></td>
+
+                <td><input type="radio" name="assentos" value="NOK"></td>
+
+                <td><input type="text" id="obs_assentos"></td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<!-- ===========================
+     LIMPEZA
+=========================== -->
+
+<div class="section">
+
+    <div class="section-title">
+
+        Limpeza / Cleaning
+
+    </div>
+
+    <table class="check-table">
+
+        <thead>
+
+            <tr>
+
+                <th>Item</th>
+
+                <th>Conforme</th>
+
+                <th>Não Conforme</th>
+
+                <th>Observação</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>Limpeza Interna</td>
+
+                <td><input type="radio" name="lint" value="OK" checked></td>
+
+                <td><input type="radio" name="lint" value="NOK"></td>
+
+                <td><input type="text" id="obs_lint"></td>
+
+            </tr>
+
+            <tr>
+
+                <td>Limpeza Externa</td>
+
+                <td><input type="radio" name="lext" value="OK" checked></td>
+
+                <td><input type="radio" name="lext" value="NOK"></td>
+
+                <td><input type="text" id="obs_lext"></td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+<!-- ===========================
+     FOTOS
+=========================== -->
+
+<div class="section">
+
+    <div class="section-title">
+
+        Fotos / Photos
+
+    </div>
+
+    <div class="grid2">
+
+        <div>
+
+            <label>
+
+                Foto Frontal / Front Photo
+
+            </label>
+
+            <input
+                id="fotoFrontal"
+                type="file"
+                accept="image/*"
+                capture="environment"
+                multiple>
+
+            <div
+                id="previewFrontal"
+                class="preview">
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <label>
+
+                Limpeza / Cleaning
+
+            </label>
+
+            <input
+                id="fotoLimpeza"
+                type="file"
+                accept="image/*"
+                capture="environment"
+                multiple>
+
+            <div
+                id="previewLimpeza"
+                class="preview">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <div>
+
+        <label>
+
+            Segurança / Security
+
+        </label>
+
+        <input
+            id="fotoSeguranca"
+            type="file"
+            accept="image/*"
+            capture="environment"
+            multiple>
+
+        <div
+            id="previewSeguranca"
+            class="preview">
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+OBSERVAÇÕES
+=========================== -->
+
+<div class="section">
+
+    <div class="section-title">
+
+        Observações Gerais
+
+    </div>
+
+    <textarea
+        id="observacoes"
+        rows="5"
+        placeholder="Digite observações adicionais..."></textarea>
+
+</div>
+
+<!-- ===========================
+BOTÃO
+=========================== -->
+
+<div
+    style="margin-top:40px;
+           text-align:center;">
+<div
+id="loading"
+
+style="display:none;
+margin-top:20px;
+text-align:center;">
+
+Gerando relatório...
+
+</div>
+    <button
+        id="btnGerar">
+
+        GERAR RELATÓRIO
+
+    </button>
+
+</div>
+
+</div>
+
+<script>
+
+const fotos={
+
+    frontal:[],
+    limpeza:[],
+    seguranca:[]
+
+};
+
+function preview(input,container,array){
+
+    const div=document.getElementById(container);
+
+    div.innerHTML="";
+
+    array.length=0;
+
+    [...input.files].forEach(file=>{
+
+        array.push(file);
+
+        const reader=new FileReader();
+
+        reader.onload=e=>{
+
+            const img=document.createElement("img");
+
+            img.src=e.target.result;
+
+            div.appendChild(img);
+
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
+
+document.getElementById("fotoFrontal")
+.addEventListener("change",function(){
+
+    preview(this,"previewFrontal",fotos.frontal);
+
+});
+
+document.getElementById("fotoLimpeza")
+.addEventListener("change",function(){
+
+    preview(this,"previewLimpeza",fotos.limpeza);
+
+});
+
+document.getElementById("fotoSeguranca")
+.addEventListener("change",function(){
+
+    preview(this,"previewSeguranca",fotos.seguranca);
+
+});
+
+</script>
+
+</body>
+
+</html>
