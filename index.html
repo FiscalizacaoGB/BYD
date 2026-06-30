@@ -999,7 +999,7 @@ function gerarRelatorio(){
    COLE A URL DO WEB APP AQUI APÓS O DEPLOY
 */
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwD66nnZBSFo7dLNt_IZ-47U_nLCCH5DizDwIk3BWvOp8w3PVdwd4_UaJlOJjSDe_zA/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzzWCRAKCzjsNXD01bOyehNX8kJu7qyIscMu1h8VLS29SxANWq6cIMOiRD1lPiZnc-H/exec";
 
 
 /* ==========================================================
@@ -1148,29 +1148,29 @@ async function enviarRelatorio(){
 
         document.getElementById("loading").style.display="block";
 
-        const dados = coletarDados();
+       const dados = coletarDados();
 
-        dados.fotos = await prepararFotos();
+dados.fotos = await prepararFotos();
 
-        const resposta = await fetch(
+console.log("OBJETO:");
+console.log(dados);
 
-            WEB_APP_URL,
+console.log("JSON:");
+console.log(JSON.stringify(dados));
 
-            {
+alert(JSON.stringify(dados).substring(0,500));
 
-                method:"POST",
+const resposta = await fetch(
+    WEB_APP_URL,
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(dados)
+    }
+);
 
-                headers:{
-
-                    "Content-Type":"text/plain"
-
-                },
-
-                body:JSON.stringify(dados)
-
-            }
-
-        );
 
         const json = await resposta.json();
 
