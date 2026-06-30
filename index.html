@@ -863,29 +863,44 @@ function carregarPreview(input,idPreview,lista){
 
 function coletarDados(){
 
-    const dados={
+    const agora = new Date();
 
-        prefixo:document.getElementById("prefixo").value.trim(),
+const dados = {
 
-        placa:document.getElementById("placa").value
-                    .trim()
-                    .toUpperCase(),
+    versao: "1.0",
 
-        data:document.getElementById("data").value,
+    geradoEm: agora.toISOString(),
 
-        hora:document.getElementById("hora").value,
+    prefixo: document.getElementById("prefixo").value.trim(),
 
-        observacoes:document
-            .getElementById("observacoes")
-            .value,
+    placa: document.getElementById("placa").value
+        .trim()
+        .toUpperCase(),
 
-        gps:APP.gps,
+    data: document.getElementById("data").value,
 
-        checklist:[],
+    hora: document.getElementById("hora").value,
 
-        fotos:APP.fotos
+    observacoes: document
+        .getElementById("observacoes")
+        .value
+        .trim(),
 
-    };
+    gps: {
+
+        latitude: APP.gps.latitude,
+
+        longitude: APP.gps.longitude,
+
+        accuracy: APP.gps.accuracy
+
+    },
+
+    checklist: [],
+
+    fotos: {}
+
+};
 
     CHECKLIST.forEach(grupo=>{
 
