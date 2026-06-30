@@ -865,78 +865,81 @@ function coletarDados(){
 
     const agora = new Date();
 
-const dados = {
+    const dados = {
 
-    versao: "1.0",
+        idRelatorio: crypto.randomUUID(),
 
-    geradoEm: agora.toISOString(),
+        versao: "1.0",
 
-    prefixo: document.getElementById("prefixo").value.trim(),
+        geradoEm: agora.toISOString(),
 
-    placa: document.getElementById("placa").value
-        .trim()
-        .toUpperCase(),
+        prefixo: document.getElementById("prefixo").value.trim(),
 
-    data: document.getElementById("data").value,
+        placa: document
+            .getElementById("placa")
+            .value
+            .trim()
+            .toUpperCase(),
 
-    hora: document.getElementById("hora").value,
+        data: document.getElementById("data").value,
 
-    observacoes: document
-        .getElementById("observacoes")
-        .value
-        .trim(),
+        hora: document.getElementById("hora").value,
 
-    gps: {
+        observacoes: document
+            .getElementById("observacoes")
+            .value
+            .trim(),
 
-        latitude: APP.gps.latitude,
+        gps: {
 
-        longitude: APP.gps.longitude,
+            latitude: APP.gps.latitude,
 
-        accuracy: APP.gps.accuracy
+            longitude: APP.gps.longitude,
 
-    },
+            accuracy: APP.gps.accuracy
 
-    checklist: [],
+        },
 
-    fotos: {}
+        checklist: [],
 
-};
+        fotos: {}
+
+    };
 
     CHECKLIST.forEach(grupo=>{
 
         grupo.itens.forEach(item=>{
 
-            const id=item
+            const id = item
 
-            .normalize("NFD")
+                .normalize("NFD")
 
-            .replace(/[\u0300-\u036f]/g,"")
+                .replace(/[\u0300-\u036f]/g,"")
 
-            .replace(/\s+/g,"_")
+                .replace(/\s+/g,"_")
 
-            .toLowerCase();
+                .toLowerCase();
 
-            const status=document.querySelector(
+            const status = document.querySelector(
 
                 `input[name="${id}"]:checked`
 
             ).value;
 
-            const obs=document.getElementById(
-
-                "obs_"+id
-
-            ).value;
+            const observacao = document
+                .getElementById("obs_"+id)
+                .value
+                .trim();
 
             dados.checklist.push({
 
-                categoria:grupo.categoria,
+                categoria: grupo.categoria,
 
-                item:item,
+                item: item,
 
-                status:status,
+                status: status,
 
-                observacao:obs
+                observacao: observacao
 
             });
 
@@ -996,7 +999,7 @@ function gerarRelatorio(){
    COLE A URL DO WEB APP AQUI APÓS O DEPLOY
 */
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyiWRzKVExTZFsGNzc2fIZXJzoLreZ1hfh0sejjgXtXYX9-x4clyVIUW_emIdlYHczp/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwD66nnZBSFo7dLNt_IZ-47U_nLCCH5DizDwIk3BWvOp8w3PVdwd4_UaJlOJjSDe_zA/exec";
 
 
 /* ==========================================================
