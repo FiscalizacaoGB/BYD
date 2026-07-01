@@ -213,13 +213,19 @@ table input[type=radio]{
 
     flex-wrap:wrap;
 
-    gap:10px;
+    gap:15px;
 
     margin-top:15px;
 
 }
 
-.preview img{
+.foto-preview{
+
+    position:relative;
+
+}
+
+.foto-preview img{
 
     width:180px;
 
@@ -229,7 +235,47 @@ table input[type=radio]{
 
     border-radius:8px;
 
+    border:1px solid #DDD;
+
     box-shadow:0 3px 10px rgba(0,0,0,.15);
+
+}
+
+.foto-preview button{
+
+    position:absolute;
+
+    top:-8px;
+
+    right:-8px;
+
+    width:24px;
+
+    height:24px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#d32f2f;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    padding:0;
+
+    line-height:24px;
+
+}
+
+.foto-preview button:hover{
+
+    background:#b71c1c;
 
 }
 
@@ -827,27 +873,56 @@ function configurarFotos(){
 
 }
 
-function carregarPreview(input,idPreview,lista){
+function carregarPreview(input, idPreview, lista){
 
-    const preview=document.getElementById(idPreview);
-
-    preview.innerHTML="";
-
-    lista.length=0;
+    const preview = document.getElementById(idPreview);
 
     [...input.files].forEach(file=>{
 
+        // Evita adicionar a mesma foto duas vezes
+        const jaExiste = lista.some(f=>
+            f.name===file.name &&
+            f.size===file.size &&
+            f.lastModified===file.lastModified
+        );
+
+        if(jaExiste) return;
+
         lista.push(file);
 
-        const reader=new FileReader();
+        const reader = new FileReader();
 
-        reader.onload=function(e){
+        reader.onload = function(e){
 
-            const img=document.createElement("img");
+            const container = document.createElement("div");
+            container.className = "foto-preview";
 
-            img.src=e.target.result;
+            const img = document.createElement("img");
+            img.src = e.target.result;
 
-            preview.appendChild(img);
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.innerHTML = "✕";
+            btn.title = "Remover foto";
+
+            btn.onclick = function(){
+
+                const indice = lista.indexOf(file);
+
+                if(indice > -1){
+
+                    lista.splice(indice,1);
+
+                }
+
+                container.remove();
+
+            };
+
+            container.appendChild(img);
+            container.appendChild(btn);
+
+            preview.appendChild(container);
 
         };
 
@@ -855,8 +930,10 @@ function carregarPreview(input,idPreview,lista){
 
     });
 
-}
+    // Permite selecionar novamente a mesma foto
+    input.value = "";
 
+}
 /* ==========================================================
    COLETA DOS DADOS
 ========================================================== */
